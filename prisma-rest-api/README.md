@@ -1,24 +1,9 @@
-# A Practical Introduction to Prisma
-
-This repository contains the starter project for the **Database Workflows & API Development with Prisma** workshop by [Nikolas Burk](https://twitter.com/nikolasburk).
-
-## Setup
-
-### 1. Clone this repository
-
-You can clone this repository with the following command:
+# A Prisma Rest API
 
 ```
-git clone git@github.com:nikolasburk/prisma-workshop.git
-```
+  # init db
+  npx prisma migrate dev --name init
 
-> Alternatively, you can also download the project via the GitHub UI. Click the green **Code**-button in the top-right corner and then click on **Download ZIP**.
-
-### 2. Install dependencies
-
-Navigate into the project directory and install the npm dependencies with the following command:
-
-```
-cd prisma-workshop
-npm install
+  # seed data
+  npx ts-node ./prisma/seed.ts
 ```
