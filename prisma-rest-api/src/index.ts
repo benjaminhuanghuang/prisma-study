@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/users", async (req, res) => {
-  // const result = TODO
+  // const result = TODO  
   // res.json(result)
 });
 
@@ -38,15 +38,19 @@ app.put("/post/:id/views", async (req, res) => {
 app.put("/publish/:id", async (req, res) => {
   const { id } = req.params;
 
-  // const result = TODO
+  const result = await prisma.post.findUnique({
+    where:{
+      id: Number(id)
+    }
+  });
 
-  // res.json(result)
+  res.json(result)
 });
 
 app.get("/user/:id/drafts", async (req, res) => {
   const { id } = req.params;
 
-  // const result = TODO
+   // const result = TODO
 
   // res.json(result)
 });
@@ -62,9 +66,17 @@ app.get(`/post/:id`, async (req, res) => {
 app.get("/feed", async (req, res) => {
   const { searchString, skip, take } = req.query;
 
-  // const result = TODO
+  const result = await prisma.post.findMany(
+    {
+      where:{
+        published :true
+      },
+      skip: Number(skip) || undefined,
+      take: Number(take) || undefined
+    }
+  )
 
-  // res.json(result)
+  res.json(result)
 });
 
 app.listen(8964, () =>

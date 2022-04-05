@@ -7,3 +7,7 @@
   # seed data
   npx ts-node ./prisma/seed.ts
 ```
+
+
+## Test
+test.http
